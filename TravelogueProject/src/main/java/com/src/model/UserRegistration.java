@@ -4,6 +4,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "register")
@@ -11,18 +15,24 @@ public class UserRegistration
 {
 	@Id
 	@Column
+	@NotEmpty
 	private String username;
 	@Column
+	@NotEmpty
 	private String name;
 	@Column
+	@NotEmpty
+	@Size(min=8, message="Your password is not strong !")
 	private String password;
 	@Column
 	private String reenter_password;
 	@Column
+	@Email(message="Enter valid MailId")
 	private String emailid;
 	@Column
 	private String dob;
 	@Column
+	@Min(value=10, message="Your age is too small")
 	private int age;
 	@Column
 	private String city;

@@ -14,8 +14,8 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	@Override
-	public void registerUsers(UserRegistration user)
+	public void registerUsers(UserRegistration users)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(user);
+		sessionFactory.getCurrentSession().saveOrUpdate(users);
 	}
 }

@@ -6,6 +6,6 @@ import com.src.model.UserRegistration;
 
 public interface RegistrationService
 {
-	public void registerUsers(UserRegistration user);
+	public void registerUsers(UserRegistration users);
 
 }

@@ -25,13 +25,16 @@ table.center{
 table,tr,th{
 	font:  Georgia,serif;
 }
+
+.error{color:red}  
+  
 </style>
 </head>
 <body>
 	<br><br><br><br><h1 align="center">TRAVELOGUE ~ Tourist Guide</h1>
 	<table class="center">
 
-	 <form:form action="saveUser" method="post" modelAttribute="user">
+	 <form:form action="saveUser" method="post" modelAttribute="users">
 	 <tr>
 		<td>
 			<form:label path="username">
@@ -50,6 +53,7 @@ table,tr,th{
 		</td>
 		<td>
 			<form:input path="name" />
+			<form:errors path="name" cssClass="error" />
 		</td> 
 	</tr>
 	<tr>
@@ -60,6 +64,7 @@ table,tr,th{
 		</td>
 		<td>
 			<form:input path="password" />
+			<form:errors path="password" cssClass="error"/>
 		</td> 
 	</tr>
 		<tr>
@@ -79,7 +84,8 @@ table,tr,th{
 			</form:label>
 		</td>
 		<td>
-			<form:input path="emailid" />
+			<form:input type="email" path="emailid" />
+			<form:errors path="emailid" cssClass="error" />
 		</td> 
 	</tr>
 	<tr>
@@ -101,6 +107,7 @@ table,tr,th{
 		</td>
 		<td>
 			<form:input path="age" />
+			<form:errors path="age" cssClass="error"/>
 		</td> 
 	</tr>
 	<tr>

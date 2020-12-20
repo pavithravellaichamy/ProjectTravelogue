@@ -20,9 +20,9 @@ public class RegistrationServiceImpl implements RegistrationService
 
 	@Override
 	@Transactional
-	public void registerUsers(UserRegistration user) 
+	public void registerUsers(UserRegistration users) 
 	{
-		registerDAO.registerUsers(user);	
+		registerDAO.registerUsers(users);	
 	}
 	public void setRegistrationDAO( RegistrationDAO registerDAO)
 	{

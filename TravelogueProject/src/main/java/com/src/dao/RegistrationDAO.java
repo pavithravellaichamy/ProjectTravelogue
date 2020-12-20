@@ -6,6 +6,6 @@ import com.src.model.UserRegistration;
 
 public interface RegistrationDAO 
 {
-	public void registerUsers(UserRegistration user);
+	public void registerUsers(UserRegistration users);
 	
 }

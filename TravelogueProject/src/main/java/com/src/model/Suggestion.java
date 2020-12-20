@@ -1,24 +1,29 @@
 package com.src.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 
 
 @Entity
 @Table(name = "suggest")
 public class Suggestion 
 {
-	@Id
+	@Column
 	private String username;
-	private String name;
-	@Column(columnDefinition="BLOB")
-	private byte[] image;
-	private String base64Image;
+	private String location;
+	@Id
+	@Column
 	private String spot;
-	private String date;
+	private Date date;
 	private String review;
+	@Min(value=1,message="Value must be greater than 1")
+	@Max(value=10,message="Value must be lesser than 10")
 	private String rating;
 	
 	
@@ -28,23 +33,11 @@ public class Suggestion
 	public void setUsername(String username) {
 		this.username = username;
 	}
-	public String getName() {
-		return name;
+	public String getLocation() {
+		return location;
 	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public byte[] getImage() {
-		return image;
-	}
-	public void setImage(byte[] image) {
-		this.image = image;
-	}
-	public String getBase64Image() {
-		return base64Image;
-	}
-	public void setBase64Image(String base64Image) {
-		this.base64Image = base64Image;
+	public void setLocation(String location) {
+		this.location = location;
 	}
 	public String getSpot() {
 		return spot;
@@ -52,10 +45,10 @@ public class Suggestion
 	public void setSpot(String spot) {
 		this.spot = spot;
 	}
-	public String getDate() {
+	public Date getDate() {
 		return date;
 	}
-	public void setDate(String date) {
+	public void setDate(Date date) {
 		this.date = date;
 	}
 	public String getReview() {

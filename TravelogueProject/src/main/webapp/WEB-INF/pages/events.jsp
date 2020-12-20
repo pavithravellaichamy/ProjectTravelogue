@@ -23,6 +23,16 @@ ul {
   width: 100%;
 }
 
+table.center{
+	font: italic 25px Georgia,serif;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+}
+table,tr,th{
+	font:  Georgia,serif;
+}
+
 li {
   float: left;
 }
@@ -50,39 +60,29 @@ li a:hover:not(.active) {
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#news">Events</a></li>
 </ul>
-
-</head>
-<body>
-<br><br><br><br><br>
-	<h1 align="center">WoWWW Spots :)</h1></br></br>
-	<table class="center">
-	 <form:form action="saveEvents" method="post" modelAttribute="events" enctype="multipart/form-data">
+ 	<br><br><br><br><br><br>
+	 <table class="center">
+    <form action="saveEvents" method="post">
 	 <tr>
 		<td>
-			<form:label path="username">
-				<spring:message text="Enter User Name"/>
-			</form:label>
+			User Name
 		</td>
 		<td>
-			<form:input path="username" />
+			<input type="text" name="username" />
 		</td> 
 	</tr>
 	<tr>
 		<td>
-			<form:label path="spot">
-				<spring:message text="Enter Spot"/>
-			</form:label>
+			Enter Spot
 		</td>
 		<td>
-			<form:input path="spot" />
+			<input type="text" name="spot" />
 		</td> 
 		<td>
-			<form:label path="rating">
-				<spring:message text="Enter Rating"/>
-			</form:label>
+			 Enter Rating
 		</td>
 		<td>
-			 <form:input path="rating" />
+			<input type="text" name="rating"/>
 		</td> 
 	</tr>
 	<tr>
@@ -90,7 +90,8 @@ li a:hover:not(.active) {
 	<input type="button" name="submit" value="submit"/>
 	</td>
 	</tr>
-	</form:form>
+	</form>
 	</table>
+	
 </body>
 </html>

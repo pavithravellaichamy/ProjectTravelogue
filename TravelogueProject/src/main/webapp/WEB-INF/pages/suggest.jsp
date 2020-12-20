@@ -58,22 +58,20 @@ li a:hover:not(.active) {
   <li><a href="./home">Home</a></li>
   <li><a class="active" href="./suggestions">Suggestions</a></li>
   <li><a href="./events">Events</a></li>
-  <li style="float:right"><a href="./upload">Profile</a></li>
    <li style="float:right"><a href="./logout">Logout</a></li>
+  <li style="float:right"><a href="./upload">Profile</a></li>
+
 </ul>
 	<c:forEach var="suggestion" items="${listSuggestion}">
+	<br><br><br><br><br>
 	<table class="center">
 	<tr>
 	<td>User Name</td>
 	<td>${suggestion.username}</td>
 	</tr>
 	<tr>
-	<td>Image Name</td>
-	<td>${suggestion.name}</td>
-	</tr>
-	<tr>
-	<td>Image</td>
-	<td><img src="data:image/jpg;base64,${suggestion.base64Image}" width="240" height="200"/></td>
+	<td>Location</td>
+	<td><a href="${suggestion.location}">Click Here!</a></td>
 	</tr>
 	<tr>
 	<td>Spot</td>

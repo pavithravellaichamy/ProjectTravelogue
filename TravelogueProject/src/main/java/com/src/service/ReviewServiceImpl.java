@@ -18,9 +18,9 @@ public class ReviewServiceImpl implements ReviewService
 
 	@Override
 	@Transactional
-	public void reviewUpdate(Suggestion suggest) throws Exception 
+	public void reviewUpdate(Suggestion suggestion) throws Exception 
 	{
-		reviewDAO.reviewUpdate(suggest);
+		reviewDAO.reviewUpdate(suggestion);
 	}
 	
 	public void  setReviewDAO( ReviewDAO reviewDAO)

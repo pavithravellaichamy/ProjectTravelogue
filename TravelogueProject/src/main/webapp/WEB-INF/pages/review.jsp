@@ -58,6 +58,8 @@ li a:hover:not(.active) {
 .active {
   background-color: #4CAF50;
 }
+
+.error{color:red}  
 </style>
 </head>
 
@@ -67,13 +69,13 @@ li a:hover:not(.active) {
   		 <li><a href="./home">Home</a></li>
   		 <li><a href="./suggestions">Suggestions</a></li>
   		 <li><a href="./events">Events</a></li>
+  		 <li style="float:right"><a href="./logout">Logout</a></li>
  		 <li style="float:right"><a class="active" href="./upload">Profile</a></li>
-   		 <li style="float:right"><a href="./logout">Logout</a></li>
 	</ul>
 	<br><br><br><br><br>
 	<h1 align="center">It's time to suggest others :)</h1></br></br>
 	<table class="center">
-	 <form:form action="./saveReview" method="post" modelAttribute="suggest">
+	 <form:form action="./saveReview" method="post" modelAttribute="suggestion">
 	 <tr>
 		<td>
 			<form:label path="username">
@@ -84,22 +86,14 @@ li a:hover:not(.active) {
 			<form:input path="username" />
 		</td> 
 	</tr>
-	<tr>
+	 <tr>
 		<td>
-			<form:label path="name">
-				<spring:message text="Enter Name"/>
+			<form:label path="location">
+				<spring:message text="Enter the location"/>
 			</form:label>
 		</td>
 		<td>
-			<form:input path="name" />
-		</td> 
-	</tr>
-	<tr>
-		<td>
-			Upload Image
-		</td>
-		<td>
-			 <form:input type="file" path="image" />
+			<form:input path="location" />
 		</td> 
 	</tr>
 	<tr>
@@ -119,7 +113,7 @@ li a:hover:not(.active) {
 			</form:label>
 		</td>
 		<td>
-			<form:input path="date" />
+			<form:input id="date" path="date" />
 		</td> 
 	</tr>
 		<tr>
@@ -137,7 +131,8 @@ li a:hover:not(.active) {
 			</form:label>
 		</td>
 		<td>
-			 <form:input path="rating" />
+			 <form:input  path="rating" />
+			 <form:errors path="rating" cssClass="error"/>
 		</td> 
 	</tr>
 	<tr>

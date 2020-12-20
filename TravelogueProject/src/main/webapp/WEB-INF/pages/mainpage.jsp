@@ -47,43 +47,13 @@ li a:hover:not(.active) {
 </head>
 <body>
 <ul>
-  <li><a class="active" href="./home">Home</a></li>
+  <li><a class="active" href="#home">Home</a></li>
   <li><a href="./suggestions">Suggestions</a></li>
   <li><a href="./events">Events</a></li>
-  <li style="float:right"><a class="active" href="./upload">Profile</a></li>
-   <li style="float:right"><a href="./logout">Logout</a></li>
-</ul>
-<table>
-	<c:forEach var="suggestion" items="${listSuggestion}">
-	<tr>
-	<td>User Name</td>
-	<td>${suggestion.username}</td>
-	</tr>
-	<tr>
-	<td>Image Name</td>
-	<td>${suggestion.name}</td>
-	</tr>
-	<tr>
-	<td>Image</td>
-	<td><img src="data:image/jpg;base64,${suggestion.base64Image}" width="240" height="200"/></td>
-	</tr>
-	<tr>
-	<td>Spot</td>
-	<td>${suggestion.spot}</td>
-	</tr>
-	<tr>
-	<td>Date</td>
-	<td>${suggestion.date}</td>
-	</tr>
-	<tr>
-	<td>Review</td>
-	<td>${suggestion.review}</td>
-	</tr>
-	<tr>
-	<td>Ratings</td>
-	<td>${suggestion.rating}<td></tr>
-	</c:forEach>
-</table>	
+  <li style="float:right"><a href="./logout">Logout</a></li>
+  <li style="float:right"><a href="./upload">Profile</a></li>
+  
+</ul>	
 
 </body>
 </html>

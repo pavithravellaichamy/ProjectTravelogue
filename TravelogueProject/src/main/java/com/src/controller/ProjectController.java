@@ -7,8 +7,11 @@ import java.util.Base64;
 import java.util.Iterator;
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.src.model.AdminLogin;
+import com.src.model.Events;
 import com.src.model.Suggestion;
 import com.src.model.UserRegistration;
 import com.src.service.AdminService;
 import com.src.service.DisplayService;
+import com.src.service.EventsService;
 import com.src.service.RegistrationService;
 import com.src.service.ReviewService;
 import com.src.service.UserService;
@@ -49,6 +54,9 @@ public class ProjectController
 	@Autowired
 	private UserService userService;
 	
+	@Autowired
+	private EventsService eventsService;
+	
 	@RequestMapping(value= "/")
 	public String mainUsers()
 	{
@@ -64,13 +72,14 @@ public class ProjectController
 	}
 	
 	@RequestMapping(value = "/adminLogin")
-	public ModelAndView adminLogin(@ModelAttribute("login")AdminLogin ad,ModelAndView model)  {
+	public ModelAndView adminLogin(@ModelAttribute("login")AdminLogin ad, ModelAndView model)  {
 		
 		boolean b=adminService.validate(ad);
 		
 		if(b)
 		{
-		model.setViewName("mainpage1");
+			
+			model.setViewName("mainpage1");
 		}
 		else
 		{
@@ -90,9 +99,6 @@ public class ProjectController
 	public ModelAndView userLogin(@RequestParam("username")String username, @RequestParam("password")String password,ModelAndView model) throws IOException {
 		
 		boolean b= userService.validate(username, password);
-		System.out.println(username);
-		System.out.println(password);
-		System.out.println(b);
 		if(b)
 		{
 			model.setViewName("mainpage");
@@ -104,71 +110,89 @@ public class ProjectController
 		return model;
 	}
 	
-	@RequestMapping(value = "/new", method = RequestMethod.GET)
+	@RequestMapping(value = "/new")
 	public ModelAndView newContact(ModelAndView model) {
-		UserRegistration user = new UserRegistration();
-		model.addObject("user", user);
+		UserRegistration users = new UserRegistration();
+		model.addObject("users", users);
 		model.setViewName("register");
 		return model;
 	}
 
-	@RequestMapping(value = "/saveUser", method = RequestMethod.POST)
-	public ModelAndView saveUser(@ModelAttribute UserRegistration user,ModelAndView model) {
-		if (user.getUsername()!=" ") 
+	@RequestMapping(value = "/saveUser")
+	public ModelAndView saveUser(@Valid @ModelAttribute UserRegistration users,ModelAndView model,BindingResult bindingResult) {
+		if (users.getPassword()!=users.getReenter_password() || bindingResult.hasErrors() ) 
 			{
-				registers.registerUsers(user);
+				model.setViewName("register");
+				return model;
 			}
-		model.setViewName("userlogin");
-		return model;
+		else
+			{
+				registers.registerUsers(users);
+				model.setViewName("userlogin");
+				return model;
+			}
 	}
 	
-	@RequestMapping(value = "/upload", method = RequestMethod.PUT)
+	@RequestMapping(value = "/upload")
 	public ModelAndView review(ModelAndView model) {
-		Suggestion suggest = new Suggestion();
-		model.addObject("suggest", suggest);
+		Suggestion suggestion = new Suggestion();
+		model.addObject("suggestion", suggestion);
 		model.setViewName("review");
 		return model;
 	}
 
-	@RequestMapping(value = "/saveReview", method = RequestMethod.PUT)
-	public ModelAndView saveReview(@ModelAttribute Suggestion suggest, ModelAndView model) throws Exception {
-		if(suggest.getName()!=null) 
+	@RequestMapping(value= "/saveReview")
+	public ModelAndView saveReview(@Valid @ModelAttribute("suggestion") Suggestion suggestion, ModelAndView model,BindingResult bindingResult) throws Exception {
+		if(suggestion.getUsername()==null || bindingResult.hasErrors()) 
 			{
-				suggests.reviewUpdate(suggest);
+				model.setViewName("review");
+				return model;
 			}
-		return new ModelAndView("redirect:saveReview");
+		else {
+			suggests.reviewUpdate(suggestion);
+			model.setViewName("mainpage");
+			return model;
+			}
 	}
 	
-	@RequestMapping(value = "/suggestions", method = RequestMethod.GET)
-	public ModelAndView displayReview(@ModelAttribute Suggestion suggest, ModelAndView model) throws IOException
+	@RequestMapping(value = "/suggestions")
+	public ModelAndView displayReview(@ModelAttribute Suggestion suggestion, ModelAndView model) throws IOException
 	{
 		List<Suggestion> listSuggestion = displayServices.getAllSuggestion();
-		
-		Iterator<Suggestion> itr=listSuggestion.iterator();
-	       
-        while(itr.hasNext())
-        {
-            Suggestion im=itr.next();
-            byte by[]=im.getImage();
-           
-            
-            ByteArrayInputStream input=new ByteArrayInputStream(by);
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            byte[] buffer = new byte[4096];
-            int bytesRead = -1;
-           
-           while ((bytesRead = input.read(buffer)) != -1) {
-                outputStream.write(buffer, 0, bytesRead);                 
-            }
-            
-            byte[] imageBytes = outputStream.toByteArray();
-           String base64Image = Base64.getEncoder().encodeToString(imageBytes);
-           
-           im.setBase64Image(base64Image);
-        }
         model.addObject("listSuggestion", listSuggestion);
         model.setViewName("suggest");
         return model;
+	}
+	
+	@RequestMapping(value = "/suggested")
+	public ModelAndView displayAdminReview(@ModelAttribute Suggestion suggestion, ModelAndView model) throws IOException
+	{
+		List<Suggestion> listSuggestion = displayServices.getAllSuggestion();
+        model.addObject("listSuggestion", listSuggestion);
+        model.setViewName("suggested");
+        return model;
+	} 
+	
+	@RequestMapping(value = "/events")
+	public ModelAndView listEvents(ModelAndView model) {	
+		model.setViewName("events");
+		return model;
+	}
+	
+	@RequestMapping(value = "/saveEvents")
+	public ModelAndView displayEvents(@RequestParam("username")String username, @RequestParam("spot")String spot,@RequestParam("rating")String rating,@ModelAttribute Suggestion suggestion, ModelAndView model) throws IOException
+	{
+		List<Events> listSuggestion = eventsService.getAllEvents(username,spot,rating);
+        model.addObject("listSuggestion", listSuggestion);
+        model.setViewName("mainpage1");
+        return model;
+		
+	}
+	
+	@RequestMapping(value= "/logout")
+	public String logout()
+	{
+		return "index";
 	}
 }
 
