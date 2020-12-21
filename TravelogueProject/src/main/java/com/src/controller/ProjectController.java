@@ -1,10 +1,6 @@
 package com.src.controller;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.Base64;
-import java.util.Iterator;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -14,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -32,8 +27,7 @@ import com.src.service.UserService;
 @Controller
 public class ProjectController 
 {
-	//private static final Logger logger = Logger
-	//		.getLogger(ProjectController.class);
+	//private static final Logger logger = Logger.getLogger(ProjectController.class);
 	
 	public ProjectController() {
 		System.out.println("ProjectController()");
@@ -62,7 +56,7 @@ public class ProjectController
 	{
 		return "index";
 	}
-	
+	//admin login validation 
 	@RequestMapping(value = "/admin")
 	public ModelAndView adminLogin(ModelAndView model) throws IOException {
 		AdminLogin login=new AdminLogin();		
@@ -87,7 +81,7 @@ public class ProjectController
 		}
 		return model;
 	}
-	
+	//user login validation
 	@RequestMapping(value = "/userlogin")
 	public ModelAndView loginUser(ModelAndView model) {
 		
@@ -110,6 +104,7 @@ public class ProjectController
 		return model;
 	}
 	
+	//new user registration
 	@RequestMapping(value = "/new")
 	public ModelAndView newContact(ModelAndView model) {
 		UserRegistration users = new UserRegistration();
@@ -132,7 +127,7 @@ public class ProjectController
 				return model;
 			}
 	}
-	
+	//uploading suggestions
 	@RequestMapping(value = "/upload")
 	public ModelAndView review(ModelAndView model) {
 		Suggestion suggestion = new Suggestion();
@@ -155,6 +150,7 @@ public class ProjectController
 			}
 	}
 	
+	//suggestions
 	@RequestMapping(value = "/suggestions")
 	public ModelAndView displayReview(@ModelAttribute Suggestion suggestion, ModelAndView model) throws IOException
 	{
@@ -173,8 +169,11 @@ public class ProjectController
         return model;
 	} 
 	
+	//events
 	@RequestMapping(value = "/events")
-	public ModelAndView listEvents(ModelAndView model) {	
+	public ModelAndView listEvents(ModelAndView model) {
+		Events event = new Events();
+		model.addObject("event", event);
 		model.setViewName("events");
 		return model;
 	}
@@ -189,6 +188,7 @@ public class ProjectController
 		
 	}
 	
+	//logout
 	@RequestMapping(value= "/logout")
 	public String logout()
 	{

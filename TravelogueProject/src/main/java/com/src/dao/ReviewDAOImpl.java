@@ -15,7 +15,7 @@ public class ReviewDAOImpl implements ReviewDAO
 	@Override
 	public void reviewUpdate(Suggestion suggestion) throws Exception
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(suggestion);
+		sessionFactory.getCurrentSession().saveOrUpdate(suggestion);//updating in database
 	}
 
 }

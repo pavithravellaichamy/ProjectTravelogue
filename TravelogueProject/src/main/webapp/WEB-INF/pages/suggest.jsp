@@ -57,11 +57,10 @@ li a:hover:not(.active) {
 <ul>
   <li><a href="./home">Home</a></li>
   <li><a class="active" href="./suggestions">Suggestions</a></li>
-  <li><a href="./events">Events</a></li>
    <li style="float:right"><a href="./logout">Logout</a></li>
   <li style="float:right"><a href="./upload">Profile</a></li>
-
 </ul>
+
 	<c:forEach var="suggestion" items="${listSuggestion}">
 	<br><br><br><br><br>
 	<table class="center">

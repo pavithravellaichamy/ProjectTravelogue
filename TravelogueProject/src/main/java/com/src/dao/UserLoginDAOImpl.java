@@ -17,7 +17,7 @@ public class UserLoginDAOImpl implements UserLoginDAO
 	public boolean validate(String username, String password) 
 	{
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from UserRegistration where username=:username and password=:password");
+		Query query=session.createQuery("from UserRegistration where username=:username and password=:password");  //validating
 		
 		query.setParameter("username", username);
 		query.setParameter("password", password);

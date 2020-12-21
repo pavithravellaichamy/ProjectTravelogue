@@ -7,4 +7,5 @@ import com.src.model.Suggestion;
 public interface DisplayDAO
 {
 	public List<Suggestion> getAllSuggestion();
+	
 }

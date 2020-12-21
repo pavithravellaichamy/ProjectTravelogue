@@ -20,7 +20,7 @@ public class AdminDAOImp implements AdminDAO {
 	public boolean validate(AdminLogin login) 
 	{
 		Session session=sessionFactory.getCurrentSession();
-		Query query=session.createQuery("from AdminLogin where username=:username and password=:password");
+		Query query=session.createQuery("from AdminLogin where username=:username and password=:password");  //validating
 		
 		query.setParameter("username", login.getUsername());
 		query.setParameter("password", login.getPassword());

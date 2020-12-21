@@ -40,6 +40,13 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
+table.center{
+	font: italic 20px Georgia,serif;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:auto;
+}
+
 .active {
   background-color: #4CAF50;
 }
@@ -47,13 +54,39 @@ li a:hover:not(.active) {
 </head>
 <body>
 <ul>
-  <li><a class="active" href="#home">Home</a></li>
+  <li><a class="active" href="./home">Home</a></li>
   <li><a href="./suggestions">Suggestions</a></li>
-  <li><a href="./events">Events</a></li>
   <li style="float:right"><a href="./logout">Logout</a></li>
   <li style="float:right"><a href="./upload">Profile</a></li>
-  
-</ul>	
-
+</ul>
+<c:forEach var="suggestion" items="${listSuggestion}">
+	<br><br><br><br><br>
+	<table class="center">
+	<tr>
+	<td>User Name</td>
+	<td>${suggestion.username}</td>
+	</tr>
+	<tr>
+	<td>Location</td>
+	<td><a href="${suggestion.location}">Click Here!</a></td>
+	</tr>
+	<tr>
+	<td>Spot</td>
+	<td>${suggestion.spot}</td>
+	</tr>
+	<tr>
+	<td>Date</td>
+	<td>${suggestion.date}</td>
+	</tr>
+	<tr>
+	<td>Review</td>
+	<td>${suggestion.review}</td>
+	</tr>
+	<tr>
+	<td>Ratings</td>
+	<td>${suggestion.rating}<td></tr>
+	</table>
+	<br><br>
+	</c:forEach>
 </body>
 </html>

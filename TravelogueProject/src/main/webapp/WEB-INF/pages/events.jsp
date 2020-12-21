@@ -62,35 +62,43 @@ li a:hover:not(.active) {
 </ul>
  	<br><br><br><br><br><br>
 	 <table class="center">
-    <form action="saveEvents" method="post">
+    <form:form action="saveEvents" method="post" modelAttribute="event">
 	 <tr>
 		<td>
-			User Name
+			<form:label path="username">
+				<spring:message text="Enter Username"/>
+			</form:label>
 		</td>
 		<td>
-			<input type="text" name="username" />
+			<form:input path="username" />
 		</td> 
 	</tr>
 	<tr>
 		<td>
-			Enter Spot
+			<form:label path="spot">
+				<spring:message text="Enter Spot"/>
+			</form:label>
 		</td>
 		<td>
-			<input type="text" name="spot" />
+			<form:input path="spot" />
 		</td> 
+		</tr>
+		<tr>
 		<td>
-			 Enter Rating
+			<form:label path="rating">
+				<spring:message text="Enter Rating"/>
+			</form:label>
 		</td>
 		<td>
-			<input type="text" name="rating"/>
+			<form:input path="rating"/>
 		</td> 
 	</tr>
 	<tr>
 	<td>
-	<input type="button" name="submit" value="submit"/>
+	<input type="submit" name="submit" value="submit"/>
 	</td>
 	</tr>
-	</form>
+	</form:form>
 	</table>
 	
 </body>

@@ -16,6 +16,6 @@ public class RegistrationDAOImpl implements RegistrationDAO {
 	@Override
 	public void registerUsers(UserRegistration users)
 	{
-		sessionFactory.getCurrentSession().saveOrUpdate(users);
+		sessionFactory.getCurrentSession().saveOrUpdate(users);  //updating to database
 	}
 }
