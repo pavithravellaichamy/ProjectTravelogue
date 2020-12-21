@@ -4,5 +4,5 @@ import com.src.model.AdminLogin;
 
 public interface AdminDAO {
 
-	public boolean validate(AdminLogin login);
+	public boolean validate(AdminLogin login);  //method to l
 }

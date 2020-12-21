@@ -21,7 +21,7 @@ public class DisplayDAOImpl implements DisplayDAO
 	@SuppressWarnings("unchecked")
 	public List<Suggestion> getAllSuggestion() 
 	{
-		return sessionFactory.getCurrentSession().createQuery("from Suggestion").list();
+		return sessionFactory.getCurrentSession().createQuery("from Suggestion").list(); //saving in database
 	}
 
 }
