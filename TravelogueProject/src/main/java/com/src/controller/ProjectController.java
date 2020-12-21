@@ -114,16 +114,16 @@ public class ProjectController
 	}
 
 	@RequestMapping(value = "/saveUser")
-	public ModelAndView saveUser(@Valid @ModelAttribute UserRegistration users,ModelAndView model,BindingResult bindingResult) {
-		if (users.getPassword()!=users.getReenter_password() || bindingResult.hasErrors() ) 
+	public ModelAndView saveUser(@ModelAttribute UserRegistration users,ModelAndView model) {
+		if (users.getPassword()==users.getReenter_password()) 
 			{
-				model.setViewName("register");
+				registers.registerUsers(users);
+				model.setViewName("userlogin");
 				return model;
 			}
 		else
 			{
-				registers.registerUsers(users);
-				model.setViewName("userlogin");
+				model.setViewName("register");
 				return model;
 			}
 	}
@@ -188,7 +188,6 @@ public class ProjectController
 		
 	}
 	
-	//logout
 	@RequestMapping(value= "/logout")
 	public String logout()
 	{

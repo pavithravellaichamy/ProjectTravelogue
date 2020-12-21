@@ -59,6 +59,8 @@ li a:hover:not(.active) {
 <ul>
   <li><a class="active" href="#home">Home</a></li>
   <li><a href="#news">Events</a></li>
+  <li style="float:right"><a href="./logout">Logout</a></li>
+  
 </ul>
  	<br><br><br><br><br><br>
 	 <table class="center">

@@ -63,7 +63,7 @@ table,tr,th{
 			</form:label>
 		</td>
 		<td>
-			<form:input path="password" />
+			<form:input type="password" path="password" />
 			<form:errors path="password" cssClass="error"/>
 		</td> 
 	</tr>
@@ -74,7 +74,7 @@ table,tr,th{
 			</form:label>
 		</td>
 		<td>
-			<form:input path="reenter_password" />
+			<form:input  type="password" path="reenter_password" />
 		</td> 
 	</tr>
 	<tr>

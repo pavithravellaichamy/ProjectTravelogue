@@ -46,6 +46,27 @@ table.center{
 	margin-right:auto;
 	margin-top:auto;
 }
+div#animat
+{
+	text-align:center;
+	padding:25px;
+	height:20px;
+	width:200px;
+	background:#00cccc;
+	box-shadow:5px 5px 5px yellow;
+	font-size:20px;
+	-webkit-transition: -webkit-transform 2s,width 2s,height 2s;
+}
+div#animat:hover
+{
+	-webkit-transform:rotate(360deg);
+	height:20px;
+	width:200px;
+}
+img:hover {
+ 	width:250px;
+	height:250px;
+}
 
 .active {
   background-color: #4CAF50;
@@ -54,39 +75,27 @@ table.center{
 </head>
 <body>
 <ul>
-  <li><a class="active" href="./home">Home</a></li>
+  <li><a class="active" href="#home">Home</a></li>
   <li><a href="./suggestions">Suggestions</a></li>
   <li style="float:right"><a href="./logout">Logout</a></li>
   <li style="float:right"><a href="./upload">Profile</a></li>
 </ul>
-<c:forEach var="suggestion" items="${listSuggestion}">
-	<br><br><br><br><br>
-	<table class="center">
-	<tr>
-	<td>User Name</td>
-	<td>${suggestion.username}</td>
-	</tr>
-	<tr>
-	<td>Location</td>
-	<td><a href="${suggestion.location}">Click Here!</a></td>
-	</tr>
-	<tr>
-	<td>Spot</td>
-	<td>${suggestion.spot}</td>
-	</tr>
-	<tr>
-	<td>Date</td>
-	<td>${suggestion.date}</td>
-	</tr>
-	<tr>
-	<td>Review</td>
-	<td>${suggestion.review}</td>
-	</tr>
-	<tr>
-	<td>Ratings</td>
-	<td>${suggestion.rating}<td></tr>
-	</table>
-	<br><br>
-	</c:forEach>
+<br><br><br>
+<p>
+		<img src="F:\events.jpg" height="200px" width="200px"/>
+		<img src="F:\events1.jpg" height="200px" width="200px"/>
+		<img src="F:\events5.jpg" height="200px" width="200px"/>
+		<img src="F:\events2.jpg" height="200px" width="200px"/>
+		<img src="F:\places.jpg" height="200px" width="200px"/>
+		<img src="F:\places1.jpg" height="200px" width="200px"/>
+		<img src="F:\places2.jpg" height="200px" width="200px"/></br></br></br>
+		<img src="F:\places3.jpg" height="200px" width="200px"/>
+		<img src="F:\places4.jpg" height="200px" width="200px"/>
+		<img src="F:\places6.jpg" height="200px" width="200px"/>
+		<img src="F:\places7.jpg" height="200px" width="200px"/>
+		<img src="F:\events3.jpg" height="200px" width="200px"/>
+		<img src="F:\events4.jpg" height="200px" width="200px"/>
+		<img src="F:\events6.jpg" height="200px" width="200px"/>
+	</p>
 </body>
 </html>
