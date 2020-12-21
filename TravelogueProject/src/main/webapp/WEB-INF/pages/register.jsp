@@ -37,9 +37,7 @@ table,tr,th{
 	 <form:form action="saveUser" method="post" modelAttribute="users">
 	 <tr>
 		<td>
-			<form:label path="username">
-				<spring:message text="Enter Username"/>
-			</form:label>
+			User Name
 		</td>
 		<td>
 			<form:input path="username"/>
@@ -47,31 +45,23 @@ table,tr,th{
 	</tr>
 	<tr>
 		<td>
-			<form:label path="name">
-				<spring:message text="Enter Name"/>
-			</form:label>
+			Name
 		</td>
 		<td>
 			<form:input path="name" />
-			<form:errors path="name" cssClass="error" />
 		</td> 
 	</tr>
 	<tr>
 		<td>
-			<form:label path="password">
-				<spring:message text="Enter Password"/>
-			</form:label>
+			Password
 		</td>
 		<td>
 			<form:input type="password" path="password" />
-			<form:errors path="password" cssClass="error"/>
 		</td> 
 	</tr>
 		<tr>
 		<td>
-			<form:label path="reenter_password">
-				<spring:message text="Re-enter Password"/>
-			</form:label>
+			Reenter_Password
 		</td>
 		<td>
 			<form:input  type="password" path="reenter_password" />
@@ -79,21 +69,16 @@ table,tr,th{
 	</tr>
 	<tr>
 		<td>
-			<form:label path="emailid">
-				<spring:message text="Enter Emailid"/>
-			</form:label>
+			EmailID
 		</td>
 		<td>
 			<form:input type="email" path="emailid" />
-			<form:errors path="emailid" cssClass="error" />
 		</td> 
 	</tr>
 	<tr>
 	<tr>
 		<td>
-			<form:label path="dob">
-				<spring:message text="Enter DOB"/>
-			</form:label>
+			DOB
 		</td>
 		<td>
 			<form:input path="dob" />
@@ -101,9 +86,7 @@ table,tr,th{
 	</tr>
 	<tr>
 		<td>
-			<form:label path="age">
-				<spring:message text="Enter Age"/>
-			</form:label>
+			Age
 		</td>
 		<td>
 			<form:input path="age" />
@@ -112,9 +95,7 @@ table,tr,th{
 	</tr>
 	<tr>
 		<td>
-			<form:label path="city">
-				<spring:message text="Enter City"/>
-			</form:label>
+			City
 		</td>
 		<td>
 			<form:input path="city" />

@@ -15,24 +15,19 @@ public class UserRegistration
 {
 	@Id
 	@Column
-	@NotEmpty
 	private String username;
 	@Column
-	@NotEmpty
 	private String name;
 	@Column
 	@NotEmpty
-	@Size(min=8, message="Your password is not strong !")
 	private String password;
 	@Column
 	private String reenter_password;
 	@Column
-	@Email(message="Enter valid MailId")
 	private String emailid;
 	@Column
 	private String dob;
 	@Column
-	@Min(value=10, message="Your age is too small")
 	private int age;
 	@Column
 	private String city;
