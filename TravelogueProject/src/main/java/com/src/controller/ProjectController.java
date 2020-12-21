@@ -26,8 +26,7 @@ import com.src.service.UserService;
 
 @Controller
 public class ProjectController 
-{
-	//private static final Logger logger = Logger.getLogger(ProjectController.class);
+{	
 	
 	public ProjectController() {
 		System.out.println("ProjectController()");
@@ -114,18 +113,18 @@ public class ProjectController
 	}
 
 	@RequestMapping(value = "/saveUser")
-	public ModelAndView saveUser(@ModelAttribute UserRegistration users,ModelAndView model) {
-		if (users.getPassword()==users.getReenter_password()) 
-			{
+	public ModelAndView saveUser(@ModelAttribute("users")UserRegistration users,ModelAndView model) {
+		/*if (users.getPassword()==users.getReenter_password()) 
+			{*/
 				registers.registerUsers(users);
 				model.setViewName("userlogin");
 				return model;
-			}
+			/*}
 		else
 			{
 				model.setViewName("register");
 				return model;
-			}
+			}*/
 	}
 	//uploading suggestions
 	@RequestMapping(value = "/upload")

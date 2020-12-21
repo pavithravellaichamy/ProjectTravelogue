@@ -5,6 +5,8 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,6 +18,8 @@ public class AdminDAOImp implements AdminDAO {
 	@Autowired
 	private SessionFactory sessionFactory;
 	
+	private static final Logger logger= LoggerFactory.getLogger(RegistrationDAOImpl.class);
+
 	@Override
 	public boolean validate(AdminLogin login) 
 	{
@@ -31,10 +35,12 @@ public class AdminDAOImp implements AdminDAO {
 		
 		if(!b)
 		{
+			logger.info("Login is validated");
 			return true;
 		}
 		else
 		{
+			logger.info("Login is not validated");
 			return false;
 		}
 		}
